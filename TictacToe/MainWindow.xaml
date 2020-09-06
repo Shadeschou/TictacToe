@@ -109,7 +109,7 @@
 
         </Grid>
         <Label Grid.Row="0" Height="42" DataContext="{Binding Path=GameSystems}" Content="{Binding CurrentTurn, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="1" HorizontalContentAlignment="Center" VerticalAlignment="Top"/>
-        <TextBox Grid.Row="1"  HorizontalAlignment="Left" Height="37" TextWrapping="Wrap" DataContext="{Binding Path=NewPlayer1}" Text="{Binding Name, Mode =TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="399" TextAlignment="Center" TextChanged="TextBox_TextChanged" Template="{DynamicResource EnterNameTextBox}"/>
+        <TextBox Grid.Row="1"  HorizontalAlignment="Left" Height="37" TextWrapping="Wrap" DataContext="{Binding Path=NewPlayer1}" Text="{Binding Name, Mode =TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="399" TextAlignment="Center" Template="{DynamicResource EnterNameTextBox}"/>
         <TextBox Grid.Row="1" HorizontalAlignment="Left" Height="37" TextWrapping="Wrap" DataContext="{Binding Path=NewPlayer2}" Text="{Binding Name, Mode =TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="390" Margin="399,0,0,0" TextAlignment="Center" Template="{DynamicResource EnterNameTextBox}"/>
     </Grid>
 </Window>
