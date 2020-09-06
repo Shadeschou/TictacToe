@@ -11,7 +11,7 @@ namespace TictacToe
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : Window,
     {
         #region private variables
         private KrydsEllerBolle[] resultater;
@@ -34,8 +34,6 @@ namespace TictacToe
         
         public Player newPlayer2;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public Player NewPlayer2
         {
             get { return newPlayer2; }
@@ -56,6 +54,7 @@ namespace TictacToe
         }
 
         #endregion
+        #region game controls
         private void NewGame()
         {
             resultater = new KrydsEllerBolle[9];
@@ -98,7 +97,8 @@ namespace TictacToe
 
             checkforWinner();
         }
-
+        #endregion
+        #region helper methods
         private void checkforWinner()
         {
             if (resultater[0] != KrydsEllerBolle.intet && (resultater[0] & resultater[1] & resultater[2]) == resultater[0])
@@ -154,10 +154,6 @@ namespace TictacToe
             }
             
         }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+        #endregion
     }
 }
