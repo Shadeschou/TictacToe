@@ -1,0 +1,115 @@
+﻿<Window x:Class="TictacToe.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TictacToe"
+        ResizeMode="NoResize"
+        mc:Ignorable="d"
+        Title="TicTacToe" Height="450" Width="805"
+        Background="LightSlateGray"
+        
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+
+    <Window.Resources>
+
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#373737" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="40" />
+            <Setter Property="FontFamily" Value="./#Segoe UI" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="LightSlateGray"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="ToolTipService.ToolTip" Value="iNSERT NAME"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Background" Value="LightSlateGray"/>
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+        <ControlTemplate x:Key="ButtonBaseControlTemplate" TargetType="{x:Type Button}">
+            <Border x:Name="border" CornerRadius="15" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFBEE6FD"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF3C7FB1"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFC4E5F6"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF2C628B"/>
+                </Trigger>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFBCDDEE"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF245A83"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
+                    <Setter Property="Foreground" Value="#FF838383"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="EnterNameTextBox" TargetType="{x:Type TextBox}">
+            <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF7EB4EA"/>
+                </Trigger>
+                <Trigger Property="IsKeyboardFocused" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF569DE5"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="2" x:Name="fieldsContainer">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="264"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Button Click="Button_Click" x:Name="Button0_0" Grid.Column="0" Grid.Row="0" Content="X" Template="{DynamicResource ButtonBaseControlTemplate}"></Button>
+            <Button Click="Button_Click" x:Name="Button0_1" Grid.Column="0" Grid.Row="1" Content="O" Template="{DynamicResource ButtonBaseControlTemplate}"></Button>
+            <Button Click="Button_Click" x:Name="Button0_2" Grid.Column="0" Grid.Row="2" Content="X" Template="{DynamicResource ButtonBaseControlTemplate}"></Button>
+            <Button Click="Button_Click" x:Name="Button1_0" Grid.Column="1" Grid.Row="0" Content="X" Template="{DynamicResource ButtonBaseControlTemplate}"></Button>
+            <Button Click="Button_Click" x:Name="Button1_1" Grid.Column="1" Grid.Row="1" Content="O" Template="{DynamicResource ButtonBaseControlTemplate}"></Button>
+            <Button Click="Button_Click" x:Name="Button1_2" Grid.Column="1" Grid.Row="2" Content="X" Template="{DynamicResource ButtonBaseControlTemplate}"></Button>
+            <Button Click="Button_Click" x:Name="Button2_0" Grid.Column="2" Grid.Row="0" Content="X" Template="{DynamicResource ButtonBaseControlTemplate}"></Button>
+            <Button Click="Button_Click" x:Name="Button2_1" Grid.Column="2" Grid.Row="1" Content="O" Template="{DynamicResource ButtonBaseControlTemplate}"></Button>
+            <Button Click="Button_Click" x:Name="Button2_2" Grid.Column="2" Grid.Row="2" Content="X" Template="{DynamicResource ButtonBaseControlTemplate}"></Button>
+
+        </Grid>
+        <Label Grid.Row="0" Height="42" DataContext="{Binding Path=GameSystems}" Content="{Binding CurrentTurn, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="1" HorizontalContentAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox Grid.Row="1"  HorizontalAlignment="Left" Height="37" TextWrapping="Wrap" DataContext="{Binding Path=NewPlayer1}" Text="{Binding Name, Mode =TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="399" TextAlignment="Center" TextChanged="TextBox_TextChanged" Template="{DynamicResource EnterNameTextBox}"/>
+        <TextBox Grid.Row="1" HorizontalAlignment="Left" Height="37" TextWrapping="Wrap" DataContext="{Binding Path=NewPlayer2}" Text="{Binding Name, Mode =TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="390" Margin="399,0,0,0" TextAlignment="Center" Template="{DynamicResource EnterNameTextBox}"/>
+    </Grid>
+</Window>
